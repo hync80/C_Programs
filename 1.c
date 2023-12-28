@@ -1,38 +1,45 @@
-/* 1.1. WAP to store one student’s information (i.e. student’s roll no, name, gender, marks etc) of an
-educational institute and display all the data, using structure (Access the structure members using
-pointer).
-Input: 120045 Rahul Male 77
-Output: Rollno.-120045, Name-Rahul, Gender-Male, Marks-77 */
-#include <stdio.h>
-#include <string.h>
+/* WAP to reverse the contents of a dynamic array of n elements.*/
+#include<stdio.h>
 
-struct Information {
-    int roll_no;
-    char name[30];
-    char gender[10];
-    float marks;
-};
+void makingArray(int array[],int  size){
+    int i;
+    printf("enter the elements in array: ");
+    for(i = 0 ; i < size ; i++){
+        scanf("%d" , &array[i]);
+    }
+}
 
-int main() {
-    struct Information student;
-    struct Information *ptr = &student;
+void showArray(int array[], int size){
+    int i;
+    printf("Here is the array : ");
+    for(i = 0 ; i < size ; i++){
+        printf("%d ," , array[i]);
+    }
+}
 
-    printf("enter the roll number: ");
-    scanf("%d", &student.roll_no);
+void reverse(int array[], int size){
+    int i ,j = size-1;
+    for(i = 0 ; i < j ; i++){
+              int temp ; 
+              temp = array[i];
+              array[i] = array[j];
+              array[j] = temp;
+              j--;
+    }
+}
 
-    printf("enter the name of the student: ");
-    scanf("%s", student.name);
+int main(){
+    int size;
+    printf("enter the size of the array: ");
+    scanf("%d", &size);
+    int array[size];
 
-    printf("enter the gender: ");
-    scanf("%s", student.gender);
-
-    printf("enter the marks: ");
-    scanf("%f", &student.marks);
-
-    printf("%d\n", ptr->roll_no);
-    printf("%s\n", ptr->name);
-    printf("%s\n", ptr->gender);
-    printf("%f\n", ptr->marks);
+    makingArray( array,size);
+    showArray(array, size);
+    reverse(array,size);
+    showArray(array ,size);
 
     return 0;
+
+     
 }
